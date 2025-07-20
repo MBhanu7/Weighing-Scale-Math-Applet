@@ -1,0 +1,376 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+
+h2 {
+      margin-bottom: 1rem;
+    }
+    .equation {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .equation .lhs {
+      background: #c2e7ff;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    .equation .rhs {
+      background: #ffd99e;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+    }
+
+.floating-label {
+  padding: 0.2rem 0.5rem;
+  position: absolute;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.left-label {
+  top: -107px;     /* distance above left pan */
+  left:-20px;
+   background: #c2e7ff;      /* same horizontal as pan.left or arm.left */
+}
+
+.right-label {
+  top: -107px;
+  right: -5px;
+  background: #ffd99e;
+       /* align with pan.right or arm.right */
+}
+
+
+
+    .scale-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      margin: auto;
+      margin-bottom: 1rem;
+    }
+
+
+.vertical-shape {
+  width: 2px; /* thin width */
+  height: 40px; /* small height */
+  background-color: grey; /* grey color */
+  position: absolute;
+  left: 50%;
+  top: -80px;
+  transform: translateX(-50%);
+  z-index: 15;
+}
+
+.not-equal-sign {
+  position: absolute;
+  left: 50%;
+  top: -100px;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+  z-index: 16;
+  width: 24px;
+  height: 24px;
+  background-color: #dcc3d5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+.pivot {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 20px;
+  background: #666;
+}
+
+.pan {
+  top: -80px;
+  position: absolute;
+  left: -1%;
+  transform: translateX(-10%);
+  width: 130px;
+  height: 22px;
+  background-color: #646464;
+  border: 16px solid #3b3b3b;
+  border-top: 0;
+  border-radius: 18px 18px 200px 200px;
+  z-index: 40;
+}
+.pan.left {
+  top: var(--pan-top, -80px);
+  left: var(--pan-left, -17%);
+  color: white;
+}
+
+.pan.right {
+   top: var(--pan-top, -80px);
+  left: var(--pan-left, 76%);
+  color: white;
+}
+
+.hand {
+  position: absolute;
+  bottom: 10px;
+  width: 15px;
+  height: 40px;
+  top: -69;
+  background-color: #888;
+  border-radius: 0px;
+  z-index: 35;
+  transform-origin: top center;
+  
+}
+
+.handdot {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #303030;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hand.left {
+  left: 2px;
+}
+
+.hand.right {
+  right: 2px;
+}
+
+
+.triangle-container {
+      position: absolute;
+      width: 60px;
+      height: 40px;
+      margin: 60px auto;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 155px solid transparent;
+      border-right: 155px solid transparent;
+      border-bottom: 10px solid #848484;
+      position: relative;
+      top: 0;
+      left: -125px;
+      transform-origin: 50% 50%;       /* center of the element */
+    }
+
+    .circle-outer {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #373737;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 5px #929292;
+    }
+
+
+.base {
+  position: relative;
+  width: 300px;
+  height: 40px;
+  top: -120px;
+  background-color: #cccccc;
+  border-radius: 25px;
+  margin: 320px auto;
+}
+
+
+
+/* horizontal stripe */
+.base::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #999;
+  transform: translateY(-50%);
+}
+
+/* vertical handle */
+.base::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 16px;
+  height: 40px;
+  background-color: #999;
+  transform: translateX(-50%);
+  border-radius: 4px;
+}
+
+.basesupport {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 30px;
+  height: 10px;
+  background-color: #2c2020;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* bottom pads */
+.pad {
+  position: absolute;
+  bottom: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #352a2a;
+  border-radius: 50%;
+}
+
+.pad.left {
+  left: 10px;
+}
+
+.pad.right {
+  right: 10px;
+}
+
+
+#message {
+  position: absolute;
+      margin-top: 4rem;
+      font-size: 1.2rem;
+      top: 0.5rem;
+      font-weight: bold;
+      width: 300px;
+      text-align: center;
+      
+     
+    }
+    #message .prefix {
+      color: #222;
+    }
+    #message .not-balanced {
+      color: #c33;
+    }
+    #message.balanced {
+      color: #2a7;
+    }
+
+.slider-container {
+  position: relative;
+  margin: 2rem auto;
+  width: 500px;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+    /* match your input width */
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 12px;
+  background: #ddd;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border: 4px solid rgb(50, 170, 156);
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0,0,0,0.3);
+  transition: border 0.3s, background 0.3s;
+  z-index: 10; /* ensure thumb is above other elements */
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: rgb(224, 191, 91);
+}
+
+.slider-tooltip {
+  position: absolute;
+  top: -25px;
+  left: 0;
+  transform: translateX(-50%);
+  font-size: 1.25rem;
+  font-weight: bold;
+  pointer-events: none;
+  transition: left 0.1s ease;
+}
+
+
+
+.x-label {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.ticks {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 17px;
+  left: 2px;
+  pointer-events: none;
+  z-index: 1;
+}
+.ticks span {
+  width: 2px;
+  height: 10px;
+  background-color: #666;
+  position: relative;
+}
+/*
+.ticks span::after {
+  content: attr(data-value);
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  color: #333;
+} */

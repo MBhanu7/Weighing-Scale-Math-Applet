@@ -1,0 +1,82 @@
+<html>  
+    <head>
+    <meta charset="UTF-8" />
+    <title>Balance the Scale</title>
+<link rel="stylesheet" href="style.css">
+
+            </head>
+
+    <body>      
+      <h2>Slide to balance the scale and determine the value of “x”</h2>
+
+
+
+<div class="equation">
+  Equation: <span class="lhs">x + 5</span> = <span class="rhs">9</span>
+</div>
+
+<div class="base">      
+  <div class="basesupport"></div>
+  <div class="pad left">5</div>
+  <div class="pad right">9</div>
+   
+  <div class="vertical-shape"></div>
+  <div class="not-equal-sign">≠</div>
+
+  <div class="pan left"></div>
+  <div class="pan right"></div>
+
+
+
+  <div class="hand left">
+  <div class="handdot"></div>
+</div>
+  <div class="hand right">
+  <div class="handdot"></div>
+  </div>
+
+  <div class="triangle-container">
+    <div class="triangle"></div>
+    <div class="circle-outer"></div>
+  </div>
+
+<div id="message">
+  <span class="prefix">The scale is </span>
+  <span class="not-balanced">not balanced.</span>
+</div>
+
+<div class="lhs floating-label left-label">x + 5</div>
+<div class="rhs floating-label right-label">9</div>
+
+
+<div class="slider-container">
+  <input
+    type="range"
+    id="slider"
+    min="0"
+    max="9"
+    step="1"
+    value="0"
+  />
+ <div class="slider-tooltip" id="tooltip">0</div>
+  <div class="x-label">
+    Value of <span style="color: #00a0c6;">x</span>
+  </div>
+
+<div class="ticks">
+   <span data-value="0"></span>
+  <span data-value="1"></span>
+  <span data-value="2"></span>
+  <span data-value="3"></span>
+  <span data-value="4"></span>
+  <span data-value="5"></span>
+  <span data-value="6"></span>
+  <span data-value="7"></span>
+  <span data-value="8"></span>
+  <span data-value="9"></span>
+  </div>
+  
+</div>   
+<script src="script.js"></script>
+    </body>
+</html>
